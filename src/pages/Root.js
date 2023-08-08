@@ -20,7 +20,7 @@ function RootLayout() {
         </ul>
       </nav>
 
-      <div className="mt-5 mb-5 mx-[10%] ">
+      <div className="mt-5 mb-5 mx-[7%] ">
         <Outlet></Outlet>
      
       </div>
