@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Paginate from "../components/utils/Paginate";
 import { useNavigate, createSearchParams } from "react-router-dom";
-import bg from '../assets/bg.svg'
+
 
 
 function DisplayMovies(props) {
@@ -12,7 +12,7 @@ function DisplayMovies(props) {
   const pagetype=props.nav; 
 
   const { movies, toprated } = useLoaderData();
-  console.log("test ", movies, toprated);
+
   const [page, setPage] = useState(0);
   const pageHeader=pagetype[0].toUpperCase() + pagetype.slice(1)
 
@@ -32,7 +32,7 @@ function DisplayMovies(props) {
 
     setPage(pg);
   }
-  // const img='../assets/bg.svg'
+
 
 
   return (
@@ -41,10 +41,10 @@ function DisplayMovies(props) {
       { pagetype=='movies' &&
         <>
          
-         <h1 className="text-3xl mt-10 ml-2 font-gotham font-bold text-black">
+         <h1 className="text-3xl mt-10 ml-12 mb-6 font-gotham font-bold text-black">
          Top rated
        </h1>
-        <div className={`first-letter:my-4 bg-scroller bg-cover bg-repeat-x bg-bottom p-4 toprated grid grid-flow-col gap-2 grid-auto-columns: minmax(0, 1fr) overflow-x-auto`}>
+        <div className={` bg-scroller bg-cover bg-no-repeat bg-bottom px-[3%] toprated grid grid-flow-col gap-2 grid-auto-columns: minmax(0, 1fr) overflow-x-auto`}>
           {toprated.map((movie) => {
             return (
               <MovieItem className=" " itemtype={'scroller'} movie={movie} key={movie.id}></MovieItem>
@@ -53,7 +53,9 @@ function DisplayMovies(props) {
         </div>
         </>
       }
-      <h1 className="text-3xl mt-10 ml-2 mb-4 font-gotham font-bold text-black">
+
+      <div className="mx-[3%]">
+      <h1 className="text-3xl mt-10 ml-5 mb-6 font-gotham font-bold text-black">
        {pageHeader}
       </h1>
       <div className="flex gap-6 flex-wrap justify-around mb-10">
@@ -63,6 +65,7 @@ function DisplayMovies(props) {
       </div>
 
       <Paginate onPageChange={pageClicked} pageCount={200}></Paginate>
+      </div>
     </>
   );
 }

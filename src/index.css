@@ -18,15 +18,15 @@ code {
 } */
 
 .toprated::-webkit-scrollbar {
-  @apply h-1
+  @apply h-2 
 }
 
 .toprated::-webkit-scrollbar-track{
-  @apply bg-slate-100
+  @apply bg-slate-100 
 }
 
 .toprated::-webkit-scrollbar-thumb{
-  @apply bg-gray-400
+  @apply bg-gray-400 
 }
 .paginate li
 {

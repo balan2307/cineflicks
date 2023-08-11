@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 
 function Nav() {
   return (
-    <nav className="bg-[#23222a] p-4 sticky top-0 z-30 flex text-white font-gotham  ">
-      <ul className="w-[100%] md:mx-[6%]   text-white flex  ">
+    <nav className="bg-[#02233f] p-4 sticky top-0 z-30 flex text-white font-gotham  ">
+      <ul className="w-[100%] md:mx-[2%]   text-white flex  ">
         <li className="text-2xl  md:text-4xl">
           <span>
             <img className="h-9 w-8  pb-2 text-white inline " src={cine}></img>

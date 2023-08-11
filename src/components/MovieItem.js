@@ -4,8 +4,7 @@ import { useEffect } from "react";
 function MovieItem({ movie, itemtype='movie' }) {
 
 
-  console.log("movie ",movie.title,itemtype)
-  // console.log("item ",itemtype)
+
   let vote_color =
     movie.vote_average >= 8.5
       ? "border-red-600"
@@ -14,13 +13,9 @@ function MovieItem({ movie, itemtype='movie' }) {
       : "border-yellow-300";
 
   let textColour = itemtype == "scroller" ? 'text-black' : 'text-[#d7d7d7]';
-  let itemColor = itemtype == "scroller" ? 'bg-white' : 'bg-[#3e4141]';
+  let itemColor = itemtype == "scroller" ? 'bg-none' : 'bg-[#3e4141]';
 
-  // useEffect(()=>{
 
-  // })
-
-  // console.log("textc ",textColour,itemColor)
  
 
   let date =
@@ -30,9 +25,9 @@ function MovieItem({ movie, itemtype='movie' }) {
   let media_type = movie.media_type == "tv" ? "TV series" : "Movie";
 
   return (
-    // bg- #3e4141
+
     <div
-      className={`  w-56  p-1  flex justify-center rounded-md ${itemColor} gap-x-28`}
+      className={` w-56  p-1  flex justify-center rounded-md ${itemColor} gap-x-28`}
     >
       <div className="w-[99%] ">
         <div>
@@ -55,7 +50,7 @@ function MovieItem({ movie, itemtype='movie' }) {
         {/* min-h-[80px] flex flex-col justify-between */}
         {/*text col [#d7d7d7]  */}
         <div className={`${textColour} font-oxygen p-1 mt-5  `}>
-          <p className="text-lg ">{movie.title ? movie.title : movie.name}</p>
+          <p className="text-lg font-bold">{movie.title ? movie.title : movie.name}</p>
           <div className="flex flex-wrap justify-between mt-1">
             <div>
               <span className="mr-2">{date}</span>
@@ -64,7 +59,7 @@ function MovieItem({ movie, itemtype='movie' }) {
             </span> */}
             </div>
 
-            <p className="font-extralight inline border border-spacing-0 px-1 border-dashed">
+            <p className="font-semibold inline border border-spacing-0 px-1 border-dashed">
               {media_type}
             </p>
           </div>
