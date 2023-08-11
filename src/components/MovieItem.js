@@ -1,37 +1,50 @@
 import React from "react";
 import star from "../assets/star.svg";
 
-function MovieItem({ movie }) {
-
- 
+function MovieItem({ movie, itemtype }) {
   let vote_color =
-    movie.vote_average >= 9
+    movie.vote_average >= 8.5
       ? "border-red-600"
       : movie.vote_average >= 7
-      ? 'border-green-700'
-      : 'border-yellow-300';
+      ? "border-green-700"
+      : "border-yellow-300";
 
-  let date= movie.media_type=="tv" ? movie.first_air_date.slice(0,4) : movie.release_date.slice(0,4)
-  let media_type=movie.media_type=="tv" ? 'TV series' : 'Movie'
+  let textColour = itemtype == "scroller" ? "black" : "#d7d7d7";
+  let itemColor = itemtype == "scroller" ? "white" : "#3e4141";
+
+  let date =
+    movie.media_type == "tv"
+      ? movie.first_air_date.slice(0, 4)
+      : movie.release_date.slice(0, 4);
+  let media_type = movie.media_type == "tv" ? "TV series" : "Movie";
 
   return (
-    <div className="xsm:w-[46%] w-52  p-1 shadow-2xl flex justify-center rounded-md bg-[#3e4141] ">
+    // bg- #3e4141
+    <div
+      className={`  w-56  p-1  flex justify-center rounded-md bg-[${itemColor}] gap-x-28`}
+    >
       <div className="w-[99%] ">
         <div>
           <img
-            className="xsm:h-fit  rounded-md"
+            className="xsm:max-h-[250px] w-full rounded-md max-h-[300px]"
             src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
           ></img>
         </div>
         <div className="relative top-6 left-3">
           <span
-            className={`text-white border-2 ${vote_color} rounded-[100%] bg-black p-[0.4rem]  font-bold text-lg absolute bottom-0 `}
+            className={`text-white border-[2.5px] w-10 h-10 
+            flex justify-center items-center 
+             ${vote_color} rounded-[100%] bg-[black] p-1  font-bold text-lg absolute bottom-0 `}
           >
-            {movie.vote_average.toFixed(1)}
+            {Number.isInteger(movie.vote_average)
+              ? movie.vote_average
+              : movie.vote_average.toFixed(1)}
           </span>
         </div>
-        <div className="text-[#d7d7d7] font-oxygen p-1 mt-5">
-          <p className="text-lg text-center">{movie.title ? movie.title : movie.name}</p>
+        {/* min-h-[80px] flex flex-col justify-between */}
+        {/*text col [#d7d7d7]  */}
+        <div className={`text-[${textColour}] font-oxygen p-1 mt-5  `}>
+          <p className="text-lg ">{movie.title ? movie.title : movie.name}</p>
           <div className="flex flex-wrap justify-between mt-1">
             <div>
               <span className="mr-2">{date}</span>

@@ -16,6 +16,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
+
+.toprated::-webkit-scrollbar {
+  @apply h-1
+}
+
+.toprated::-webkit-scrollbar-track{
+  @apply bg-slate-100
+}
+
+.toprated::-webkit-scrollbar-thumb{
+  @apply bg-gray-400
+}
+.paginate li
+{
+  @apply w-8 h-8 flex justify-center items-center
+ 
+}
+.paginate li:hover {
+  @apply rounded-full bg-black text-white
+}
+
+
+
 @tailwind utilities;
 
 
