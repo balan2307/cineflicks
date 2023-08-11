@@ -1,10 +1,11 @@
 import React from "react";
+import { useEffect } from "react";
 
 function MovieItem({ movie, itemtype='movie' }) {
 
 
-  // console.log("movie ",movie.release_date)
-  console.log("item ",itemtype)
+  console.log("movie ",movie.title,itemtype)
+  // console.log("item ",itemtype)
   let vote_color =
     movie.vote_average >= 8.5
       ? "border-red-600"
@@ -12,8 +13,12 @@ function MovieItem({ movie, itemtype='movie' }) {
       ? "border-green-700"
       : "border-yellow-300";
 
-  let textColour = itemtype == "scroller" ? 'black' : '#d7d7d7';
-  let itemColor = itemtype == "scroller" ? 'white' : '#3e4141';
+  let textColour = itemtype == "scroller" ? 'text-black' : 'text-[#d7d7d7]';
+  let itemColor = itemtype == "scroller" ? 'bg-white' : 'bg-[#3e4141]';
+
+  // useEffect(()=>{
+
+  // })
 
   // console.log("textc ",textColour,itemColor)
  
@@ -27,7 +32,7 @@ function MovieItem({ movie, itemtype='movie' }) {
   return (
     // bg- #3e4141
     <div
-      className={`  w-56  p-1  flex justify-center rounded-md bg-[${itemColor}] gap-x-28`}
+      className={`  w-56  p-1  flex justify-center rounded-md ${itemColor} gap-x-28`}
     >
       <div className="w-[99%] ">
         <div>
@@ -49,7 +54,7 @@ function MovieItem({ movie, itemtype='movie' }) {
         </div>
         {/* min-h-[80px] flex flex-col justify-between */}
         {/*text col [#d7d7d7]  */}
-        <div className={`text-[${textColour}] font-oxygen p-1 mt-5  `}>
+        <div className={`${textColour} font-oxygen p-1 mt-5  `}>
           <p className="text-lg ">{movie.title ? movie.title : movie.name}</p>
           <div className="flex flex-wrap justify-between mt-1">
             <div>
