@@ -17,7 +17,7 @@ function Nav() {
       text-lg">
         <NavLink to='/trending' className={({isActive})=> (isActive ? 'text-gray-400' : '') } ><li className="cursor-pointer">Trending</li></NavLink>
         <NavLink to='/movies' className={({isActive})=> (isActive ? 'text-gray-400' : '') } > <li className="cursor-pointer">Movies</li></NavLink>
-        <NavLink>  <li className="cursor-pointer">TV Shows</li></NavLink>
+        <NavLink  to='/series' className={({isActive})=> (isActive ? 'text-gray-400' : '') } >  <li className="cursor-pointer">TV Shows</li></NavLink>
       
       
       </ul>

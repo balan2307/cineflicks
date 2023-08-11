@@ -58,7 +58,7 @@ function DisplayMovies(props) {
       </h1>
       <div className="flex gap-6 flex-wrap justify-around mb-10">
         {movies.map((movie) => {
-          return <MovieItem movie={movie} key={movie.id}></MovieItem>;
+          return <MovieItem movie={movie} key={movie.id} itemtype={pagetype}></MovieItem>;
         })}
       </div>
 

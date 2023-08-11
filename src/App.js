@@ -6,9 +6,9 @@ import {
 } from "react-router-dom";
 import RootLayout from "./pages/Root";
 import DisplayMovies from "./pages/DisplayMovies";
-import { loader as loadPopular } from "./pages/DisplayMovies";
-import { Trendingloader  } from "./loaders";
-import { Moviesloader } from "./loaders";
+// import { loader as loadPopular } from "./pages/DisplayMovies";
+import { Trendingloader ,Moviesloader ,seriesLoader } from "./loaders";
+
 
 const router = createBrowserRouter([
   {
@@ -26,8 +26,14 @@ const router = createBrowserRouter([
         loader: Moviesloader,
       },
       {
+        path: "/series",
+        element: <DisplayMovies nav={'series'}></DisplayMovies>,
+        loader:seriesLoader
+      },
+      {
         path: "",
-        element: <Navigate to="/trending" />,
+        element: <Navigate to="/trending" />
+       
       },
     ],
   },

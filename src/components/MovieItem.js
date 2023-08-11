@@ -1,7 +1,10 @@
 import React from "react";
-import star from "../assets/star.svg";
 
-function MovieItem({ movie, itemtype }) {
+function MovieItem({ movie, itemtype='movie' }) {
+
+
+  // console.log("movie ",movie.release_date)
+  console.log("item ",itemtype)
   let vote_color =
     movie.vote_average >= 8.5
       ? "border-red-600"
@@ -9,13 +12,16 @@ function MovieItem({ movie, itemtype }) {
       ? "border-green-700"
       : "border-yellow-300";
 
-  let textColour = itemtype == "scroller" ? "black" : "#d7d7d7";
-  let itemColor = itemtype == "scroller" ? "white" : "#3e4141";
+  let textColour = itemtype == "scroller" ? 'black' : '#d7d7d7';
+  let itemColor = itemtype == "scroller" ? 'white' : '#3e4141';
+
+  // console.log("textc ",textColour,itemColor)
+ 
 
   let date =
-    movie.media_type == "tv"
+    (movie.media_type == "tv" || itemtype == 'series')
       ? movie.first_air_date.slice(0, 4)
-      : movie.release_date.slice(0, 4);
+      : (movie.release_date ? movie.release_date.slice(0, 4) : '');
   let media_type = movie.media_type == "tv" ? "TV series" : "Movie";
 
   return (
