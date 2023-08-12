@@ -27,7 +27,7 @@ function MovieItem({ movie, itemtype='movie' }) {
   return (
 
     <div
-      className={`w-[46%] mbl:w-52 xl:w-60  p-[0.3rem]  flex justify-center rounded-md ${itemColor} `}
+      className={`w-[11rem] mbl:w-52 xl:w-60  p-[0.3rem]  flex justify-center rounded-md ${itemColor} `}
     >
       <div className="w-[99%] ">
         <div>
