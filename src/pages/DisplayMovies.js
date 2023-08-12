@@ -41,7 +41,7 @@ function DisplayMovies(props) {
       { pagetype=='movies' &&
         <>
          
-         <h1 className="text-3xl mt-10 ml-12 mb-6 font-gotham font-bold text-black">
+         <h1 className="xsm:text-2xl text-4xl mt-10 ml-[3%] mb-6 font-gotham font-medium text-black ">
          Top rated
        </h1>
         <div className={` bg-scroller bg-cover bg-no-repeat bg-bottom px-[3%] toprated grid grid-flow-col gap-2 grid-auto-columns: minmax(0, 1fr) overflow-x-auto`}>
@@ -55,10 +55,10 @@ function DisplayMovies(props) {
       }
 
       <div className="mx-[3%]">
-      <h1 className="text-3xl mt-10 ml-5 mb-6 font-gotham font-bold text-black">
+      <h1 className="xsm:text-2xl text-3xl mt-10 ml-[1.5rem] mb-6 font-gotham font-medium text-black">
        {pageHeader}
       </h1>
-      <div className="flex gap-6 flex-wrap justify-around mb-10">
+      <div className="xsm:justify-center sm1:justify-around flex gap-x-1 gap-y-4 flex-wrap  mb-10">
         {movies.map((movie) => {
           return <MovieItem movie={movie} key={movie.id} itemtype={pagetype}></MovieItem>;
         })}

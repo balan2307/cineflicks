@@ -12,8 +12,8 @@ function Nav() {
   
   return (
     <>
-      <nav className="bg-[#02233f] p-4 sticky top-0 z-30 flex text-white font-gotham  ">
-        <ul className="w-[100%] md:mx-[2%]   text-white flex  ">
+      <nav className="bg-[#0a1929] p-4 sticky top-0 z-30 flex text-white font-gotham  ">
+        <ul className="w-[100%] mx-[2%]   text-white flex  ">
           <li className="text-2xl  md:text-4xl">
             <span className="xsm:visible sm1:hidden ">
               <img

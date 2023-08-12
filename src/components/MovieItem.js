@@ -27,7 +27,7 @@ function MovieItem({ movie, itemtype='movie' }) {
   return (
 
     <div
-      className={`xsm:w-40 w-56  p-1  flex justify-center rounded-md ${itemColor} gap-x-28`}
+      className={`w-40 mbl:w-52 xl:w-60  p-[0.3rem]  flex justify-center rounded-md ${itemColor} `}
     >
       <div className="w-[99%] ">
         <div>
@@ -50,7 +50,7 @@ function MovieItem({ movie, itemtype='movie' }) {
         {/* min-h-[80px] flex flex-col justify-between */}
         {/*text col [#d7d7d7]  */}
         <div className={`${textColour} font-oxygen p-1 mt-5  `}>
-          <p className="text-lg font-bold">{movie.title ? movie.title : movie.name}</p>
+          <p className="xsm:text-md sm1:text-lg font-bold">{movie.title ? movie.title : movie.name}</p>
           <div className="flex flex-wrap justify-between mt-1">
             <div>
               <span className="mr-2">{date}</span>
