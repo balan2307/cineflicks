@@ -54,11 +54,11 @@ function DisplayMovies(props) {
         </>
       }
 
-      <div className="mx-[3%]">
+      <div className="xsm:mx-[1%] mx-[3%]">
       <h1 className="xsm:text-2xl text-3xl mt-10 ml-[0.75rem] mb-6 font-gotham font-medium text-black">
        {pageHeader}
       </h1>
-      <div className="xsm:justify-center sm1:justify-around flex gap-x-3 gap-y-4 flex-wrap  mb-10">
+      <div className="xsm:justify-center sm1:justify-around flex gap-x-1 gap-y-4 flex-wrap  mb-10">
         {movies.map((movie) => {
           return <MovieItem movie={movie} key={movie.id} itemtype={pagetype}></MovieItem>;
         })}
