@@ -41,7 +41,7 @@ function DisplayMovies(props) {
       { pagetype=='movies' &&
         <>
          
-         <h1 className="xsm:text-2xl text-4xl mt-10 ml-[3%] mb-6 font-gotham font-medium text-black ">
+         <h1 className="xsm:text-2xl text-3xl mt-10 ml-[3%] mb-6 font-gotham font-medium text-black ">
          Top rated
        </h1>
         <div className={` bg-scroller bg-cover bg-no-repeat bg-bottom px-[3%] toprated grid grid-flow-col gap-2 grid-auto-columns: minmax(0, 1fr) overflow-x-auto`}>
