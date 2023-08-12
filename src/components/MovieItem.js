@@ -27,7 +27,7 @@ function MovieItem({ movie, itemtype='movie' }) {
   return (
 
     <div
-      className={` w-56  p-1  flex justify-center rounded-md ${itemColor} gap-x-28`}
+      className={`xsm:w-40 w-56  p-1  flex justify-center rounded-md ${itemColor} gap-x-28`}
     >
       <div className="w-[99%] ">
         <div>

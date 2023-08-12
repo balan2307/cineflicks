@@ -16,7 +16,8 @@ module.exports = {
       },
       screens: {
         xsm: { raw: "(max-width:595px)" },
-        sm: "640px",
+        sm1: { raw: "(min-width:596px)" },
+        sm: "425px",
         // => @media (min-width: 640px) { ... }
 
         md: "768px",
