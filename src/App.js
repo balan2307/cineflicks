@@ -7,7 +7,7 @@ import {
 import RootLayout from "./pages/Root";
 import DisplayMovies from "./pages/DisplayMovies";
 // import { loader as loadPopular } from "./pages/DisplayMovies";
-import { Trendingloader ,Moviesloader ,seriesLoader } from "./loaders";
+import { Trendingloader ,Moviesloader ,seriesLoader ,Searchloader} from "./loaders";
 
 
 const router = createBrowserRouter([
@@ -26,9 +26,14 @@ const router = createBrowserRouter([
         loader: Moviesloader,
       },
       {
-        path: "/series",
+        path: "/tvshows",
         element: <DisplayMovies nav={'series'}></DisplayMovies>,
         loader:seriesLoader
+      },
+      {
+        path: "/search",
+        element: <DisplayMovies nav={'search results'}></DisplayMovies>,
+        loader:Searchloader
       },
       {
         path: "",

@@ -50,7 +50,7 @@ function SideBar({toggleSidebar,showSidebar}) {
           </span>
           <span>
             <NavLink
-              to="/series"
+              to="/tvshows"
               className={({ isActive }) => (isActive ? "text-gray-400" : "")}
             >
               TV shows

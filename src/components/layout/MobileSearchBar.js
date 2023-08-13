@@ -4,6 +4,8 @@ import { Form } from 'react-router-dom'
 import search2 from "../../assets/search.svg";
 
 function MobileSearchBar(props) {
+
+
   return (
     <div className={`xsm:visible sm1:hidden absolute w-[100%] gap-4 flex z-40 h-[70px] p-2 bg-[#0a1929] 
     ease-in-out duration-500 ${
@@ -16,11 +18,15 @@ function MobileSearchBar(props) {
             className="h-9 rounded-l-[0.3rem] cursor-auto text-white w-[100%] border-none focus:outline-none bg-[#0a1929]"
             type="text"
             placeholder="Search"
+            onChange={(e)=>props.onSearchChange(e)}
+            value={props.searchedTerm}
+            onKeyUp={(e)=>props.onEnter(e)}
           ></input>
           <div className="flex items-center">
           <img
             src={search2}
             className="h-6 w-8 mt-3 rounded-r-[0.3rem] "
+            onClick={props.onSearch}
           ></img>
           </div>
            
