@@ -9,9 +9,9 @@ function SideBar({toggleSidebar,showSidebar}) {
   return (
     <>
       <ul
-        className={`p-4 xsm:visible sm1:hidden flex flex-col gap-6 bg-[#02233f] text-white w-[50%] h-[100%] fixed z-10 m
+        className={`p-4 visible  lg:hidden flex flex-col gap-6 bg-[#02233f] text-white w-[50%] h-[100%] fixed z-10 m
         ease-in-out duration-700 ${
-          showSidebar ? "translate-x-0 " : "-translate-x-80"
+          showSidebar ? "translate-x-0 " : "-translate-x-[40rem]"
         }   `}
       >
         <span className="flex justify-end">
