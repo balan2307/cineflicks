@@ -1,119 +1,94 @@
 import React from "react";
-import MovieItem from "../components/MovieItem";
-import { useLoaderData } from "react-router-dom";
-import { useState, useEffect } from "react";
+import {
+  useLoaderData,
+  Await,
+  useLocation,
+  useNavigate,
+  createSearchParams,
+} from "react-router-dom";
+import { useState, useEffect, Suspense } from "react";
 import Paginate from "../components/utils/Paginate";
-import { useNavigate, createSearchParams } from "react-router-dom";
-
-import { useLocation } from "react-router-dom";
-
+import Scroller from "../components/utils/Sroller";
+import ListMovies from "../components/listmovies/ListMovies";
 
 function DisplayMovies(props) {
   const navigate = useNavigate();
-  const pagetype=props.nav; 
-  const location=useLocation()
-  
+  const pagetype = props.nav;
+  const location = useLocation();
 
-
-  const { movies, toprated ,pages } = useLoaderData();
-
-
+  const { results, toprated, pages } = useLoaderData();
 
   const [page, setPage] = useState(0);
-  const pageHeader=pagetype[0].toUpperCase() + pagetype.slice(1)
+  const pageHeader = pagetype[0].toUpperCase() + pagetype.slice(1);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [page]);
 
-  const queryParams = new URLSearchParams(window.location.search)
-
+  const queryParams = new URLSearchParams(window.location.search);
 
   function pageClicked(pg) {
-
+   
     let params1 = {
       page: pg,
     };
 
-    let params2={
-      q:queryParams.get('q'),
-      page:pg
-    }
-
-
+    let params2 = {
+      q: queryParams.get("q"),
+      page: pg,
+    };
 
     let options = {
       pathname: `${location.pathname}`,
-      search: `?${ queryParams.get('q') ? createSearchParams(params2) : createSearchParams(params1)}`,
+      search: `?${
+        queryParams.get("q")
+          ? createSearchParams(params2)
+          : createSearchParams(params1)
+      }`,
     };
 
-
-  
     navigate(options, { replace: true });
 
     setPage(pg);
   }
 
-
-
   return (
-    <>
-     
-      { pagetype=='movies' &&
-        <>
-         
-       {
-        toprated &&
-        <>
-          <h1 className="xsm:text-2xl text-3xl mt-10 ml-[3%] mb-6 font-gotham font-medium text-black ">
-         Top rated
-       </h1>
-        <div className={` bg-scroller bg-cover bg-no-repeat bg-bottom px-[3%] toprated grid grid-flow-col gap-2 grid-auto-columns: minmax(0, 1fr) overflow-x-auto`}>
-          {toprated.map((movie) => {
-            return (
-              <MovieItem className=" " itemtype={'scroller'} movie={movie} key={movie.id}></MovieItem>
-            );
-          })}
+    <Suspense
+      fallback={
+        <div className="w-[60%]  mb-48 flex justify-center ">
+          <p className="align-middle ">Loading</p>
         </div>
-        </>
-        
-       }
-        </>
       }
+    >
+      <Await resolve={results}>
+        {({ movies, pages, toprated }) => {
+          return (
+            <>
+              {pagetype === "movies" && (
+                <>
+                  {toprated && (
+                    <Scroller header="Top rated" toprated={toprated}></Scroller>
+                  )}
+                </>
+              )}
 
-      <div className="xsm:mx-[1%] mx-[3%]">
-      <h1 className="xsm:text-2xl text-3xl mt-10 ml-[0.75rem] mb-6 font-gotham font-medium text-black">
-       {pageHeader}
-      </h1>
-      <div className="xsm:justify-center sm1:justify-around flex gap-x-1 gap-y-4 flex-wrap  mb-10">
-        {movies.map((movie) => {
-          return <MovieItem movie={movie} key={movie.id} itemtype={pagetype}></MovieItem>;
-        })}
-      </div>
+              <div className="xsm:mx-[1%] mx-[3%]">
+                <h1 className="xsm:text-2xl text-3xl mt-10 ml-[0.75rem] mb-6 font-gotham font-medium text-black">
+                  {pageHeader}
+                </h1>
+                <ListMovies movies={movies} pagetype={pagetype}></ListMovies>
 
-      <Paginate onPageChange={pageClicked} pageCount={parseInt(pages) || 200}></Paginate>
-      </div>
-    </>
+                <Paginate
+                  onPageChange={pageClicked}
+                  pageCount={parseInt(pages) || 200}
+                ></Paginate>
+              </div>
+            </>
+          );
+        }}
+      </Await>
+    </Suspense>
   );
 }
-
-export const loader = async ({ request, params }) => {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-    },
-  };
-
-  const url = new URL(request.url);
-  const page = url.searchParams.get("page") || 1;
-
-  const res = await fetch(
-    `https://api.themoviedb.org/3/trending/all/day?&api_key=7058204019b40bcb9d3f847e9171e702&page=${page}`,
-    options
-  );
-  const response = await res.json();
-  return response;
-};
 
 export default DisplayMovies;

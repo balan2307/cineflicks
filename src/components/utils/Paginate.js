@@ -10,7 +10,7 @@ function Paginate(props) {
    
     const handlePageClick = (event) => {
 
-    
+      console.log("clicked")
       props.onPageChange(event.selected + 1)
 
     };

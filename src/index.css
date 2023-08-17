@@ -36,6 +36,9 @@ code {
   @apply rounded-full bg-black text-white
 }
 
+.previous  {
+  @apply hidden
+}
 
 
 @tailwind utilities;

@@ -25,7 +25,7 @@ function Nav() {
   }
 
   function navtoSearchPage() {
-    if (searchedTerm.trim() != "") navigate(`/search?q=${searchedTerm.trim()}`);
+    if (searchedTerm.trim() != "")  navigate(`/search?q=${encodeURIComponent(searchedTerm.trim())}`);
   }
 
   function setSearch(e) {
@@ -51,7 +51,7 @@ function Nav() {
       ></MobileSearchBar>
       <nav className="bg-[#0a1929] xsm:p-2 p-4 sticky top-0 z-30 flex text-white font-gotham  ">
         <ul className="w-[100%] mx-[2%]   text-white flex  ">
-          <li className="text-2xl  md:text-4xl flex w-[90%] lg:w-[70%]">
+          <li className="text-2xl  md:text-4xl flex w-[90%] lg:w-[60%] mr-16">
             <span className="visible  lg:hidden ">
               <img
                 className=" h-8 w-16 inline mr-"
@@ -90,9 +90,10 @@ function Nav() {
             </Form>
           </li>
 
-          <li className="flex items-center ">
+          <li className="lg:w-96 flex items-center justify-between ">
             <ul
-              className="hidden  lg:visible ml-32 md:ml-20 lg:flex justify-between w-60 md:w-80 items-center
+              className="w-[100%] hidden  lg:visible  lg:flex justify-between 
+               items-center
       text-lg"
             >
               <NavLink
@@ -112,6 +113,13 @@ function Nav() {
                 className={({ isActive }) => (isActive ? "text-gray-400" : "")}
               >
                 <li className="cursor-pointer">TV Shows</li>
+              </NavLink>
+
+              <NavLink
+                to="/watchlist"
+                className={({ isActive }) => (isActive ? "text-gray-400" : "")}
+              >
+                <li className="cursor-pointer">Watchlist</li>
               </NavLink>
             </ul>
           </li>

@@ -1,11 +1,18 @@
 import React from "react";
-import { useEffect } from "react";
+
+import watch from "../assets/watch.svg";
+import watchns from '../assets/watch-ns.svg'
+import watched from "../assets/watched.svg";
+import watched2 from "../assets/watched-scroller.svg";
 
 //item type prop to dynamically change the color for scroller and non scroller movie item
-
+import { useContext } from "react";
+import watchListContext from "../store/watchlist-context";
 function MovieItem({ movie, itemtype = "movie" }) {
+  const ctx = useContext(watchListContext);
 
-
+  const itemPresent = ctx.list.find((item) => item.id == movie.id);
+  const marked = itemPresent ? true : false;
 
   let vote_color =
     movie.vote_average >= 8.5
@@ -43,7 +50,7 @@ function MovieItem({ movie, itemtype = "movie" }) {
             src={poster}
           ></img>
         </div>
-        { movie.vote_average>=0 && 
+        {movie.vote_average >= 0 && (
           <div className="relative top-6 left-3 ">
             <span
               className={`text-white border-[2.5px] w-10 h-10 
@@ -55,10 +62,30 @@ function MovieItem({ movie, itemtype = "movie" }) {
                 : movie.vote_average.toFixed(1)}
             </span>
           </div>
-        }
+        )}
 
+        <div className=" flex flex-col items-end">
+          {!marked && (
+            <button className="text-white" onClick={() => ctx.addItem(movie)}>
+              <img src={`${itemtype == "scroller" ? watch : watchns}`} className="w-8 h-8"></img>
+            </button>
+          )}
+          {marked && (
+            <button
+              className="text-white"
+              onClick={() => ctx.removeItem(movie)}
+            >
+              <img
+                src={`${itemtype == "scroller" ? watched2 : watched}`}
+                className="w-[1.9rem] h-8"
+              ></img>
+            </button>
+          )}
+        </div>
 
-        <div className={`${textColour} font-oxygen p-1 mt-5  `}>
+        
+
+        <div className={`${textColour} font-oxygen p-1 mt-5 `}>
           <p className="xsm:text-md sm1:text-lg font-bold">
             {movie.title ? movie.title : movie.name}
           </p>
@@ -72,6 +99,7 @@ function MovieItem({ movie, itemtype = "movie" }) {
             </p>
           </div>
         </div>
+     
       </div>
     </div>
   );
