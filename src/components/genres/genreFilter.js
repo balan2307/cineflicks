@@ -1,5 +1,8 @@
 import React from "react";
 
+
+const API_KEY=process.env.REACT_APP_API_KEY
+
 function genreFilter() {
   const [genres, setGenres] = useState([]);
   const [genresId, setGenresId] = useState([]);
@@ -26,7 +29,7 @@ function genreFilter() {
 
     async function filterMovie() {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=d30cfa81166aead28138ace3f4016390&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genresId.toString()}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genresId.toString()}`
       );
       const data = await response.json();
       // setMovies(data.results)
