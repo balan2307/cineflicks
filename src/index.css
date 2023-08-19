@@ -33,13 +33,16 @@ code {
  
 }
 .paginate li:hover {
-  @apply rounded-full bg-black text-white
+  @apply bg-gray-100 text-black rounded-full
 }
 
 .previous  {
   @apply hidden
 }
 
+.active {
+  @apply  rounded-full bg-black text-white
+}
 
 @tailwind utilities;
 

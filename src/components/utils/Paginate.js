@@ -25,6 +25,7 @@ function Paginate(props) {
           onPageChange={handlePageClick}
           pageRangeDisplayed={3}
           marginPagesDisplayed={2}
+          activeClassName="active"
           
           pageCount={pageCount}
           className='flex justify-center gap-2 paginate p-5'

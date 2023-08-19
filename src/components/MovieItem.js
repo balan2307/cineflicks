@@ -10,6 +10,8 @@ import { useContext } from "react";
 import watchListContext from "../store/watchlist-context";
 function MovieItem({ movie, itemtype = "movie" }) {
 
+  console.log("Itemtype ",itemtype)
+
   // console.log("item render")
   const ctx = useContext(watchListContext);
 
@@ -32,12 +34,12 @@ function MovieItem({ movie, itemtype = "movie" }) {
 
   let date =
     movie.media_type == "tv" || itemtype == "series"
-      ? movie.first_air_date.slice(0, 4)
-      : movie.release_date && movie.release_date != ""
+      ? ((movie.first_air_date && movie.first_air_date!="") ? movie.first_air_date.slice(0, 4) : "")
+      : ((movie.release_date && movie.release_date != "")
       ? movie.release_date.slice(0, 4)
-      : "";
+      : "");
 
-  let media_type = movie.media_type == "tv" ? "TV series" : "Movie";
+  let media_type = (movie.media_type == "tv" || itemtype=="series" )? "TV series" : "Movie";
 
   return (
     <div
