@@ -8,7 +8,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 export const Moviesloader = async ({ request, params }) => {
 
-  console.log("moviesloader")
+
   const options = {
     method: "GET",
     headers: {

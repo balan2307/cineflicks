@@ -24,7 +24,6 @@ function WatchList({ nav }) {
   const content = movies.slice(start, start + limit);
 
   function pageClicked(pg) {
-    console.log("page ", pg);
     navigate(`${path}?page=${pg}`);
   }
 

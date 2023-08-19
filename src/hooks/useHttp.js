@@ -18,7 +18,7 @@ function useHttp() {
 
       const res = await fetch(url,options);
       const response=await res.json();
-      console.log("use-http",response)
+
       applyData(response.results);
       
 

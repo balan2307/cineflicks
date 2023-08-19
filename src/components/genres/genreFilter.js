@@ -21,7 +21,7 @@ function genreReducer(state, action) {
 
 function GenreFilter({setmovies,setpages,page,genreUrl,genreItemsUrl}) {
 
-  console.log("Page ",page)
+
   const [genres, setGenres] = useState([]);
 
   const [state, dispatch] = useReducer(genreReducer, intialState);
@@ -38,7 +38,7 @@ function GenreFilter({setmovies,setpages,page,genreUrl,genreItemsUrl}) {
   async function getGenres() {
     const response = await fetch(genreUrl);
     const data = await response.json();
-    console.log("Res ", data.genres);
+    // console.log("Res ", data.genres);
     setGenres(data.genres);
   }
 

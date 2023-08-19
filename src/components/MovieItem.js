@@ -10,7 +10,7 @@ import { useContext } from "react";
 import watchListContext from "../store/watchlist-context";
 function MovieItem({ movie, itemtype = "movie" }) {
 
-  console.log("Itemtype ",itemtype)
+
 
   // console.log("item render")
   const ctx = useContext(watchListContext);
