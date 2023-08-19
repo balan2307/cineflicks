@@ -9,6 +9,8 @@ import watched2 from "../assets/watched-scroller.svg";
 import { useContext } from "react";
 import watchListContext from "../store/watchlist-context";
 function MovieItem({ movie, itemtype = "movie" }) {
+
+  // console.log("item render")
   const ctx = useContext(watchListContext);
 
   const itemPresent = ctx.list.find((item) => item.id == movie.id);
@@ -41,12 +43,12 @@ function MovieItem({ movie, itemtype = "movie" }) {
     <div
       className={`${
         itemtype == "scroller" ? "w-40" : "w-[46%]"
-      } mbl:w-52 xl:w-60  p-[0.3rem]  flex justify-center rounded-md ${itemColor} `}
+      } mbl:w-52 xl:w-56  p-[0.3rem]  flex justify-center rounded-md ${itemColor} `}
     >
       <div className="w-[99%] ">
         <div>
           <img
-            className="xsm:max-h-[250px] w-full rounded-md max-h-[300px]"
+            className="xsm:max-h-[250px] w-full rounded-md max-h-[260px]"
             src={poster}
           ></img>
         </div>

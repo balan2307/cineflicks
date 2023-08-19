@@ -1,20 +1,33 @@
 import React from 'react'
 
-
+import { useCallback } from 'react';
 //paused as hooks cannot be used in loader functions and we are fetching data
 // using loader function
 
 function useHttp() {
 
-   const sendRequest=async(url)=>
+   const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+   const sendRequest=useCallback(async(url,applyData)=>
    {
 
       const res = await fetch(url,options);
       const response=await res.json();
-      return response;
+      console.log("use-http",response)
+      applyData(response.results);
+      
 
+   },[])
+
+   return{
+      sendRequest
    }
-   return {response}
+
 
 }
 

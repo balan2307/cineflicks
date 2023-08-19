@@ -12,8 +12,12 @@ import { Trendingloader } from "./loaders/trendingLoader";
 // import { Moviesloader } from "./loaders/moviesLoader";
 // import { seriesLoader } from "./loaders/seriesLoader";
 // import { Searchloader } from "./loaders/searchLoader";
+
+import TvSeries from "./pages/TvSeries";
+import Trending from "./pages/Trending";
 import { Suspense } from "react";
 import WatchList from "./pages/WatchList";
+import Movies from "./pages/Movies";
 
 const router = createBrowserRouter([
   {
@@ -22,18 +26,18 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/trending",
-        element: <DisplayMovies nav={'trending'}></DisplayMovies>,
+        element: <Trending nav={'trending'}></Trending>,
      
         loader: Trendingloader
       },
       {
         path: "/movies",
-        element: <DisplayMovies nav={'movies'}></DisplayMovies>,
-        loader: (meta)=> import('./loaders/moviesLoader').then((module) => module.Moviesloader(meta)),
+        element: <Movies nav={'movies'}></Movies>,
+        // loader: (meta)=> import('./loaders/moviesLoader').then((module) => module.Moviesloader(meta)),
       },
       {
         path: "/tvshows",
-        element: <DisplayMovies nav={'series'}></DisplayMovies>,
+        element: <TvSeries nav={'series'}></TvSeries>,
         loader:(meta)=> import('./loaders/seriesLoader').then((module) => module.seriesLoader(meta))
       },
       {

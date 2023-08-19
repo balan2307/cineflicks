@@ -9,6 +9,8 @@ import search from "../../assets/search.svg";
 import search2 from "../../assets/search.svg";
 import MobileSearchBar from "./MobileSearchBar";
 import { useNavigate } from "react-router-dom";
+import Link from "../utils/Link";
+
 
 function Nav() {
   const navigate = useNavigate();
@@ -49,24 +51,24 @@ function Nav() {
         onSearch={navtoSearchPage}
         onEnter={handleKeyPress}
       ></MobileSearchBar>
-      <nav className="bg-[#0a1929] xsm:p-2 p-4 sticky top-0 z-30 flex text-white font-gotham  ">
+      <nav className="bg-[#0a1929] xsm:p-2 p-3 sticky top-0 z-30 flex text-white font-gotham  ">
         <ul className="w-[100%] mx-[2%]   text-white flex  ">
-          <li className="text-2xl  md:text-4xl flex w-[90%] lg:w-[60%] mr-16">
+          <li className="text-xl  md:text-3xl flex w-[90%] lg:w-[60%] mr-16">
             <span className="visible  lg:hidden ">
               <img
-                className=" h-8 w-16 inline mr-"
+                className="xsm:h-7 h-8 w-16 inline mr-"
                 onClick={toggleSidebar}
                 src={hamburger}
               ></img>
             </span>
             <span>
               <img
-                className="h-9 w-12  pb-2 text-white inline "
+                className="xsm:h-8 h-9 w-12  pb-2 text-white inline "
                 src={cine}
               ></img>
             </span>
-            <p className="inline  ml-1  cursor-pointer">
-              <NavLink to='/'>Cineflicks</NavLink>
+            <p className=" ml-1 cursor-pointer flex align-middle ">
+              <NavLink to='/trending' >Cineflicks</NavLink>
             </p>
             <Form className="ml-8 w-[100%] xsm:hidden sm1:visible">
               <span className="flex w-[100%] ">
@@ -128,7 +130,7 @@ function Nav() {
             <span onClick={toggleSearchbar}>
               <img
                 src={search2}
-                className="h-9 p-1 w-8  rounded-r-[0.3rem] "
+                className="h-7  w-7  rounded-r-[0.3rem] "
                 onKeyUp={(e)=>handleKeyPress(e)}
               ></img>
             </span>

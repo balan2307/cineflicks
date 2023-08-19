@@ -3,6 +3,7 @@ import cross from "../../assets/cross.svg";
 import series from "../../assets/series.svg";
 import trending from "../../assets/trending.svg";
 import movies from "../../assets/movies.svg";
+import watchlist2 from "../../assets/watchlist2.svg"
 import { NavLink } from "react-router-dom";
 
 function SideBar({toggleSidebar,showSidebar}) {
@@ -54,6 +55,19 @@ function SideBar({toggleSidebar,showSidebar}) {
               className={({ isActive }) => (isActive ? "text-gray-400" : "")}
             >
               TV shows
+            </NavLink>
+          </span>
+        </li>
+        <li className="cursor-pointer">
+          <span className=" mr-2">
+            <img className="w-6 h-6 inline" src={watchlist2}></img>
+          </span>
+          <span>
+            <NavLink
+              to="/watchlist"
+              className={({ isActive }) => (isActive ? "text-gray-400" : "")}
+            >
+              Watch list
             </NavLink>
           </span>
         </li>
