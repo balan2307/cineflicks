@@ -28,11 +28,10 @@ function GenreFilter({setmovies,setpages,page,genreUrl,genreItemsUrl}) {
 
   function addId(id) {
     dispatch({type:"ADD_ID", payload:id});
-   
   }
 
   function removeId(id) {
-    dispatch({type:"REMOVE_ID",payload:id});
+    dispatch({type:"REMOVE_ID",payload:id}); 
 
   }
 
