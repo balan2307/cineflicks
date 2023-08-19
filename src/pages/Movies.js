@@ -1,10 +1,9 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
 import ListMovies from "../components/listmovies/ListMovies";
 import Paginate from "../components/utils/Paginate";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import GenreFilter from "../components/genres/GenreFilter";
+import GenreFilter from "../components/genres/genreFilter"
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 function Movies({ nav: pagetype }) {
