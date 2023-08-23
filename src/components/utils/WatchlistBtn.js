@@ -10,18 +10,17 @@ import watchListContext from "../../store/watchlist-context";
 function WatchlistBtn({itemtype,btnStatus,movie}) {
 
   const ctx = useContext(watchListContext);
-  console.log("moviee ",movie)
-  
+
   function RemoveFromWatchlist(e)
   {
-    console.log("clicked remeove")
+   
     e.stopPropagation()
     ctx.removeItem(movie)
   }
 
   function addToWatchList(e)
   {
-    console.log("clicked add")
+   
     e.stopPropagation()
     ctx.addItem(movie)
   }

@@ -54,7 +54,7 @@ function MovieItem({ movie, itemtype = "movie" }) {
   return (
     <div
       className={`${
-        itemtype == "scroller" ? "w-40" : "w-[46%]"
+        itemtype == "scroller" ? "w-44" : "w-[46%]"
       } mbl:w-52 xl:w-56  p-[0.3rem]  flex justify-center rounded-md ${itemColor} `}
       onClick={navToDetailPage}
     >

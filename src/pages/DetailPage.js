@@ -33,7 +33,7 @@ function DetailPage() {
         `https://api.themoviedb.org/3/${type}/${id}?api_key=${API_KEY}`
       );
       const data = await response.json();
-      console.log("data ", data.genres);
+   
 
       let addmovie = {
         title: data.title,
