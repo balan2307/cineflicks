@@ -81,16 +81,18 @@ function DetailPage() {
           <div className="details md:w-[80%] p-4 font-rem">
             <div className="mt-10">
               <p className="font-semibold text-2xl md:text-3xl mb-1">{title}</p>
-              <span className="border border-gray-500 p-[0.2rem] text-sm ">
+              <div className="flex flex-wrap ">
+              {/* <span className="border border-gray-500 p-[0.2rem] text-sm ">
                 PG-18
-              </span>
+              </span> */}
               <span className="ml-2">06/15/2023</span>
-              <span className="ml-2">{genres.toString()}</span>
+              <p className="ml-2 break-all">{genres.toString()}</p>
               <span className="ml-2">2h 24m</span>
+              </div>
             </div>
 
             <div className="mt-2 flex gap-3">
-              {newmovie.vote_average && (
+              {newmovie.vote_average>=0 && (
                 <ItemVote vote={newmovie.vote_average} />
               )}
               {!marked && (
