@@ -18,11 +18,13 @@ import Trending from "./pages/Trending";
 import { Suspense } from "react";
 import WatchList from "./pages/WatchList";
 import Movies from "./pages/Movies";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout></RootLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/trending",
@@ -38,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/tvshows",
         element: <TvSeries nav={'series'}></TvSeries>,
-        loader:(meta)=> import('./loaders/seriesLoader').then((module) => module.seriesLoader(meta))
+        // loader:(meta)=> import('./loaders/seriesLoader').then((module) => module.seriesLoader(meta))
       },
       {
         path: "/search",

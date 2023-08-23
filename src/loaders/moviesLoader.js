@@ -24,6 +24,8 @@ export const Moviesloader = async ({ request, params }) => {
     options
   );
 
+
+
   const response = await res.json();
   const pages = response.total_pages;
 

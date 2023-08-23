@@ -1,16 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import ErrorBoundary from "./components/services/ErrorBoundary";
 
-
-import { WatchListContextProvider } from './store/watchlist-context';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { WatchListContextProvider } from "./store/watchlist-context";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <WatchListContextProvider><App /></WatchListContextProvider>
+    <WatchListContextProvider>
+      {/* <ErrorBoundary fallback="There was an error"> */}
+        <App />
+      {/* </ErrorBoundary> */}
+    </WatchListContextProvider>
   </React.StrictMode>
 );
-
-

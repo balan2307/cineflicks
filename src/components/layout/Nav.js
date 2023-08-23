@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import cine from "../../assets/cine.svg";
 import { NavLink } from "react-router-dom";
 import hamburger from "../../assets/hamburger.svg";
@@ -9,7 +9,7 @@ import search from "../../assets/search.svg";
 import search2 from "../../assets/search.svg";
 import MobileSearchBar from "./MobileSearchBar";
 import { useNavigate } from "react-router-dom";
-import Link from "../utils/Link";
+import { useDebounce } from "../../hooks/useDebounce";
 
 
 function Nav() {
@@ -18,6 +18,37 @@ function Nav() {
   const [showSearchbar, setSearchbarStatus] = useState(false);
   const [searchedTerm, setSearchTerm] = useState("");
 
+  // const debouncedValue=useDebounce(searchedTerm,500)
+
+
+
+  // useEffect(()=>{
+
+  //   console.log("change ",debouncedValue)
+  //   if(debouncedValue.trim()=="") return;
+  //   navtoSearchPage(debouncedValue)
+  // },[debouncedValue])
+
+
+  useEffect(()=>{
+
+    console.log("term ",searchedTerm)
+    if(searchedTerm.trim()=="") return;
+    const timeoutID = setTimeout(() => {
+      console.log("time to search",searchedTerm)
+      navtoSearchPage();
+
+    }, 600);
+
+  return () => {
+    console.log("cleartimeout",searchedTerm)
+    return clearTimeout(timeoutID )}
+    ;
+
+  },[searchedTerm])
+
+
+  console.log("re render")
   function toggleSidebar() {
     setSidebarStatus((status) => !status);
   }
@@ -27,18 +58,29 @@ function Nav() {
   }
 
   function navtoSearchPage() {
-    if (searchedTerm.trim() != "")  navigate(`/search?q=${encodeURIComponent(searchedTerm.trim())}`);
+    if (searchedTerm.trim() != "")  navigate(`/search?q=${encodeURIComponent(searchedTerm)}`);
   }
 
   function setSearch(e) {
+    
+   
     setSearchTerm(e.target.value);
+
+    
   }
 
   function handleKeyPress(e)
   {
+    
     if(e.key=="Enter") navtoSearchPage();
 
     
+  }
+
+  function handleKeyDown(e)
+  {
+    // if(e.key=="Backspace") console.log("back")
+
   }
 
   return (
@@ -81,6 +123,9 @@ function Nav() {
                   value={searchedTerm}
                   onKeyUp={(e)=>handleKeyPress(e)}
                   placeholder="Search movies ,tv shows"
+                  onKeyDown={(e)=>handleKeyDown(e)}
+                  
+                  
 
                 ></input>
                 <img

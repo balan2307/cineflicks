@@ -13,6 +13,7 @@ function TvSeries({ nav: pagetype }) {
   const [page, setPage] = useState(1);
   const [status, setStatus] = useState(false);
   const navigate = useNavigate();
+  const [loading,setloading]=useState(false);
 
   const seriesGenre= `https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=en-US`
   const seriesList= `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
@@ -35,6 +36,7 @@ function TvSeries({ nav: pagetype }) {
         page={page}
         genreUrl={seriesGenre}
         genreItemsUrl={seriesList}
+        setloading={setloading}
 
       ></GenreFilter>
       <div className="xsm:mx-[1%] mx-[3%]">
