@@ -38,7 +38,7 @@ function Nav() {
       console.log("time to search",searchedTerm)
       navtoSearchPage();
 
-    }, 600);
+    }, 550);
 
   return () => {
     console.log("cleartimeout",searchedTerm)

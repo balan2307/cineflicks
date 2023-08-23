@@ -7,7 +7,6 @@ import {
 import RootLayout from "./pages/Root";
 import DisplayMovies from "./pages/DisplayMovies";
 
-
 import { Trendingloader } from "./loaders/trendingLoader";
 // import { Moviesloader } from "./loaders/moviesLoader";
 // import { seriesLoader } from "./loaders/seriesLoader";
@@ -19,43 +18,69 @@ import { Suspense } from "react";
 import WatchList from "./pages/WatchList";
 import Movies from "./pages/Movies";
 import ErrorPage from "./pages/ErrorPage";
+import DetailPage from "./pages/DetailPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout></RootLayout>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/trending",
-        element: <Trending nav={'trending'}></Trending>,
-     
-        loader: Trendingloader
+        element: <Trending nav={"trending"}></Trending>,
+
+        loader: Trendingloader,
       },
       {
-        path: "/movies",
-        element: <Movies nav={'movies'}></Movies>,
-        // loader: (meta)=> import('./loaders/moviesLoader').then((module) => module.Moviesloader(meta)),
+        path:"/movies",
+        // element: <Movies nav={"movies"}></Movies>,
+        children: [
+          {
+            index:true,
+            element:<Movies nav={"movies"}></Movies>
+
+          },
+          {
+            path:":id",
+            element: <DetailPage></DetailPage>,
+          },
+          // loader: (meta)=> import('./loaders/moviesLoader').then((module) => module.Moviesloader(meta)),
+        ],
       },
+
       {
         path: "/tvshows",
-        element: <TvSeries nav={'series'}></TvSeries>,
+      
+        children:[
+
+          {
+            index:true,
+            element: <TvSeries nav={"series"}></TvSeries>,
+          },
+          {
+            path:":id",
+            element: <DetailPage></DetailPage>,
+          },
+
+        ]
         // loader:(meta)=> import('./loaders/seriesLoader').then((module) => module.seriesLoader(meta))
       },
       {
         path: "/search",
-        element: <DisplayMovies nav={'search results'}></DisplayMovies>,
-        loader:(meta)=> import('./loaders/searchLoader').then((module) => module.Searchloader(meta))
+        element: <DisplayMovies nav={"search results"}></DisplayMovies>,
+        loader: (meta) =>
+          import("./loaders/searchLoader").then((module) =>
+            module.Searchloader(meta)
+          ),
       },
       {
         path: "/watchlist",
         element: <WatchList nav={"WatchList"}></WatchList>,
-      
       },
       {
-        index:true,
-        element: <Navigate to="/trending" />
-       
+        index: true,
+        element: <Navigate to="/trending" />,
       },
     ],
   },

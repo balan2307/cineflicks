@@ -1,5 +1,5 @@
 import React from "react";
-import MovieItem from "../MovieItem";
+import MovieItem from "../MovieItem/MovieItem";
 import { useEffect } from "react";
 import useHttp from "../../hooks/useHttp";
 import { useState } from "react";

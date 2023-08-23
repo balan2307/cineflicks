@@ -15,12 +15,14 @@ module.exports = {
         monetserrat: ["Montserrat", "sans-serif"],
         oxygen: ["Space Grotesk", "sans-serif"],
         rajdhani:["Rajdhani", "sans-serif"],
+        rem:['REM', 'sans-serif']
 
       },
       screens: {
         xsm: { raw: "(max-width:595px)" },
         sm1: { raw: "(min-width:596px)" },
         mbl: "495px",
+        
         ...screens
         // sm: "640px",
         // // => @media (min-width: 640px) { ... }
