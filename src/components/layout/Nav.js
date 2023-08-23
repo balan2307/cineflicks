@@ -93,7 +93,7 @@ function Nav() {
         onSearch={navtoSearchPage}
         onEnter={handleKeyPress}
       ></MobileSearchBar>
-      <nav className="bg-[#0a1929] xsm:p-2 p-3 sticky top-0 z-30 flex text-white font-gotham  ">
+      <nav className="bg-[#0a1929]   xsm:p-[0.8rem] p-3 sticky top-0 z-30 flex text-white font-gotham  ">
         <ul className="w-[100%] mx-[2%]   text-white flex  ">
           <li className="text-xl  md:text-3xl flex w-[90%] lg:w-[60%] mr-16">
             <span className="visible  lg:hidden ">
