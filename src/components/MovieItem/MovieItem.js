@@ -11,6 +11,7 @@ function MovieItem({ movie, itemtype = "movie" }) {
 
  
   const navigate=useNavigate();
+  // console.log("movie ",movie,itemtype)
 
 
 
@@ -57,7 +58,7 @@ function MovieItem({ movie, itemtype = "movie" }) {
   function setTitle(title)
   {
 
-    
+    console.log("title ",title)
     if(title.length<=19) return  title
     else return (title.substring(0,17) + "...")
 
@@ -88,7 +89,7 @@ function MovieItem({ movie, itemtype = "movie" }) {
 
         <div className={`${textColour} font-oxygen p-1 mt-5 `}>
           <p className="xsm:text-md sm1:text-lg font-bold ">
-            {setTitle(movie.title ? movie.title : movie.name,"xsm")}
+            {setTitle(movie.title ? movie.title : movie.name)}
           </p>
           <div className="flex flex-wrap justify-between mt-1">
             <div>
