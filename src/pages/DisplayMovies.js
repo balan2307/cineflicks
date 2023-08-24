@@ -47,7 +47,7 @@ function DisplayMovies(props) {
     <>
       <div className="xsm:mx-[1%] mx-[3%]">
         <h1 className="xsm:text-2xl text-3xl mt-10 ml-[0.75rem] mb-6 font-gotham font-medium text-black">
-          Search
+          Search Results
         </h1>
         <ListMovies movies={movies} pagetype={pagetype}></ListMovies>
 

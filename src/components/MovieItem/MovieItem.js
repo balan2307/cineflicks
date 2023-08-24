@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //item type prop to dynamically change the color for scroller and non scroller movie item
 import { useContext } from "react";
@@ -21,9 +21,12 @@ function MovieItem({ movie, itemtype = "movie" }) {
   const marked = itemPresent ? true : false;
 
 
+
   let textColour = itemtype == "scroller" ? "text-black" : "text-[#d7d7d7]";
   let itemColor = itemtype == "scroller" ? "bg-none" : "bg-[#3e4141]";
+
   
+
 
   let poster = movie.poster_path
     ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
@@ -51,17 +54,26 @@ function MovieItem({ movie, itemtype = "movie" }) {
     else  navigate(`/tvshows/${movie.id}`)
   }
 
+  function setTitle(title)
+  {
+
+    
+    if(title.length<=19) return  title
+    else return (title.substring(0,17) + "...")
+
+  }
+
   return (
     <div
       className={`${
         itemtype == "scroller" ? "w-44" : "w-[46%]"
-      } mbl:w-52 xl:w-56  p-[0.3rem]  flex justify-center rounded-md ${itemColor} `}
+      } mbl:w-52 xl:w-56  p-[0.3rem]  flex justify-center rounded-md ${itemColor} cursor-pointer`}
       onClick={navToDetailPage}
     >
       <div className="w-[99%] ">
         <div>
           <img
-            className="xsm:max-h-[250px] w-full rounded-md max-h-[260px]"
+            className="xsm:max-h-[250px] w-full rounded-md max-h-[250px]"
             src={poster}
           ></img>
         </div>
@@ -75,8 +87,8 @@ function MovieItem({ movie, itemtype = "movie" }) {
         
 
         <div className={`${textColour} font-oxygen p-1 mt-5 `}>
-          <p className="xsm:text-md sm1:text-lg font-bold">
-            {movie.title ? movie.title : movie.name}
+          <p className="xsm:text-md sm1:text-lg font-bold ">
+            {setTitle(movie.title ? movie.title : movie.name,"xsm")}
           </p>
           <div className="flex flex-wrap justify-between mt-1">
             <div>

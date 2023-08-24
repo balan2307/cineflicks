@@ -35,10 +35,10 @@ function Nav() {
     console.log("term ",searchedTerm)
     if(searchedTerm.trim()=="") return;
     const timeoutID = setTimeout(() => {
-      console.log("time to search",searchedTerm)
+      // console.log("time to search",searchedTerm)
       navtoSearchPage();
 
-    }, 550);
+    }, 300);
 
   return () => {
     console.log("cleartimeout",searchedTerm)
