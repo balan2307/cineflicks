@@ -32,7 +32,7 @@ function Nav() {
 
   useEffect(()=>{
 
-    console.log("term ",searchedTerm)
+    // console.log("term ",searchedTerm)
     if(searchedTerm.trim()=="") return;
     const timeoutID = setTimeout(() => {
       // console.log("time to search",searchedTerm)
@@ -41,14 +41,14 @@ function Nav() {
     }, 300);
 
   return () => {
-    console.log("cleartimeout",searchedTerm)
+    // console.log("cleartimeout",searchedTerm)
     return clearTimeout(timeoutID )}
     ;
 
   },[searchedTerm])
 
 
-  console.log("re render")
+  // console.log("re render")
   function toggleSidebar() {
     setSidebarStatus((status) => !status);
   }

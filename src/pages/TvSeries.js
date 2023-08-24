@@ -4,6 +4,7 @@ import Paginate from "../components/utils/Paginate";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import GenreFilter from "../components/genres/genreFilter";
+import LoaderIcon from "../components/utils/LoaderIcon";
 const API_KEY = process.env.REACT_APP_API_KEY;
 function TvSeries({ nav: pagetype }) {
 
@@ -39,16 +40,21 @@ function TvSeries({ nav: pagetype }) {
         setloading={setloading}
 
       ></GenreFilter>
+
+
       <div className="xsm:mx-[1%] mx-[3%]">
         <h1 className="xsm:text-2xl text-3xl mt-10 ml-[0.75rem] mb-6 font-gotham font-medium text-black">
           Series
         </h1>
-        <ListMovies movies={movies} pagetype={pagetype}></ListMovies>
+        {loading &&  <LoaderIcon></LoaderIcon>   }
+        {!loading && (
+          <ListMovies movies={movies} pagetype={pagetype}></ListMovies>
+        )}
 
-        <Paginate
+        {!loading && <Paginate
           onPageChange={(e) => setPage(e)}
           pageCount={parseInt(pages) > 500 ? 200 : parseInt(pages)}
-        ></Paginate>
+        ></Paginate>}
       </div>
     </>
   );

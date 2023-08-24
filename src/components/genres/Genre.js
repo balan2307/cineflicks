@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 function Genre({ genre ,addId,removeId }) {
   const [toggle, setToggle] = useState(false);
   const [status,setStatus]=useState(false);
-//   console.log("check ",addId,genre.id)
+
 
   function handleClick() {
 

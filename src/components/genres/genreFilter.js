@@ -47,16 +47,21 @@ function GenreFilter({
 
   async function getGenres() {
     try {
+      setloading(true)
       const response = await fetch(genreUrl);
 
-      console.log("response genre ", response);
       if (!response.ok) {
-        console.log("resok ",response)
+        // console.log("resok ",response)
         throw json({ message: "Could not fetch movies" }, { status: 500 });
       }
 
       const data = await response.json();
-      setGenres(data.genres);
+      
+
+        setGenres(data.genres);
+
+      
+     
     } catch (e) {
 
       throwAsyncError(e);
@@ -72,7 +77,7 @@ function GenreFilter({
   }, []);
 
   useEffect(() => {
-    // setloading(true)
+    
     async function filterMovie() {
       const response = await fetch(
         `${genreItemsUrl}&with_genres=${state.genresId.toString()}`
@@ -85,9 +90,11 @@ function GenreFilter({
         const data = await response.json();
         setmovies(data.results);
         setpages(data.total_pages);
-        // setloading(false)
+   
+          setloading(false)
+
         // setMovies(data.results)
-        console.log("filter ", data);
+   
       }
     }
 

@@ -58,7 +58,6 @@ function MovieItem({ movie, itemtype = "movie" }) {
   function setTitle(title)
   {
 
-    console.log("title ",title)
     if(title.length<=19) return  title
     else return (title.substring(0,17) + "...")
 

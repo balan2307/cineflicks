@@ -1,8 +1,9 @@
 import React from "react";
 
-function ItemVote({ vote ,pagetype="detail" }) {
-    
-  console.log("type ",pagetype)
+function ItemVote({ vote ,pagetype="detail" ,size="md"}) {
+
+
+  const border= size=="md" ? ' border-[2.5px] w-10 h-10' : ' border-[5.4px] w-14 h-14'
 
 
   let vote_color =
@@ -14,9 +15,9 @@ function ItemVote({ vote ,pagetype="detail" }) {
   return (
     <div className={`${pagetype!="detail" ? 'relative top-6 left-3' : '' }  `}>
       <span
-        className={`text-white border-[2.5px] w-10 h-10 
+        className={`text-white ${border}
     flex justify-center items-center 
-     ${vote_color} rounded-[100%] bg-[black] p-1  font-bold text-lg ${pagetype!="detail" ? 'absolute bottom-0' : '' } `}
+     ${vote_color} rounded-[100%] bg-[black] ${size=="md" ? 'p-1' : 'p-1'}  font-bold text-lg ${pagetype!="detail" ? 'absolute bottom-0' : '' } `}
       >
         {Number.isInteger(vote)
           ? vote

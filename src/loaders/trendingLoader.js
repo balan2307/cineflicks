@@ -26,7 +26,7 @@ export const Trendingloader = async ({ request, params }) => {
   const topresponse = await top.json();
   if((response.ok!=undefined && !response.ok) || (topresponse.ok!=undefined && !topresponse.ok))
   {
-     console.log(response ,topresponse.ok)
+   
      throw json({message:"Could not fetch movies"},{status:500})
   }
   else
