@@ -1,20 +1,13 @@
 import React, { useReducer } from "react";
 import { useState, useEffect } from "react";
 import Genre from "./Genre";
-import { json } from "react-router-dom";
-import ErrorPage from "../../pages/ErrorPage";
-
-import { useThrowAsyncError } from "../services/asyncErrorHandler";
-
+import useHttp from "../../hooks/useHttp";
 
 const intialState = {
   genresId: [],
 };
 
 function genreReducer(state, action) {
-
- 
-
   if (action.type == "ADD_ID") {
     return { genresId: [action.payload, ...state.genresId] };
   }
@@ -33,7 +26,15 @@ function GenreFilter({
   setloading,
 }) {
   const [genres, setGenres] = useState([]);
-  const throwAsyncError=useThrowAsyncError();
+  const { sendRequest: getGenres ,loading:loadingGenre} = useHttp();
+
+  const { sendRequest: getFilteredMovies ,loading:loadingMovies } = useHttp();
+  
+ 
+  useEffect(()=>{
+    setloading(loadingMovies)
+
+  },[loadingMovies])
 
   const [state, dispatch] = useReducer(genreReducer, intialState);
 
@@ -45,61 +46,32 @@ function GenreFilter({
     dispatch({ type: "REMOVE_ID", payload: id });
   }
 
-  async function getGenres() {
-    try {
-      setloading(true)
-      const response = await fetch(genreUrl);
-
-      if (!response.ok) {
-        // console.log("resok ",response)
-        throw json({ message: "Could not fetch movies" }, { status: 500 });
-      }
-
-      const data = await response.json();
-      
-
-        setGenres(data.genres);
-
-      
-     
-    } catch (e) {
-
-      throwAsyncError(e);
-      console.log("error info",e)
-      return <ErrorPage />
-   
-    }
+  function setGenresList(response) {
+    setGenres(response.genres);
   }
 
+  function setFilteredList(response) {
+    setmovies(response.results);
+    setpages(response.total_pages);
+    // setloading(loadingMovies)
+  }
+
+  
   useEffect(() => {
-      getGenres();
-   
-  }, []);
+    getGenres(genreUrl, setGenresList);
+  }, [getGenres]);
 
   useEffect(() => {
+    // setloading(loadingMovies)
+    getFilteredMovies(
+      `${genreItemsUrl}&with_genres=${state.genresId.toString()}`,
+      setFilteredList
+    );
+
     
-    async function filterMovie() {
-      const response = await fetch(
-        `${genreItemsUrl}&with_genres=${state.genresId.toString()}`
-      );
+  }, [state.genresId, page,getFilteredMovies]);
 
-      if (!response.ok) {
-        console.log("response ok ", response.ok);
-        throw json({ message: "Could not fetch movies" }, { status: 500 });
-      } else {
-        const data = await response.json();
-        setmovies(data.results);
-        setpages(data.total_pages);
-   
-          setloading(false)
 
-        // setMovies(data.results)
-   
-      }
-    }
-
-    filterMovie();
-  }, [state.genresId, page]);
   return (
     <div className=" xsm:mx-[3%] mx-[3%] flex flex-wrap gap-2 rounded-md">
       {genres.map((genre) => (

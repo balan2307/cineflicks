@@ -7,6 +7,8 @@ import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Trending({nav:pagetype}) {
+
+
   const [page, setPage] = useState(1);
   const [status, setStatus] = useState(false);
   const navigate=useNavigate();
@@ -22,6 +24,8 @@ function Trending({nav:pagetype}) {
 
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [page]);
+
+  // throw new Error("SMGW")
   
   return (
     <>
