@@ -1,12 +1,16 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useAsyncError, useLoaderData } from "react-router-dom";
 import Paginate from "../components/utils/Paginate";
 import ListMovies from "../components/listmovies/ListMovies";
 import Scroller from '../components/utils/Scroller'
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useThrowAsyncError } from "../components/services/asyncErrorHandler";
 
 function Trending({nav:pagetype}) {
+
+
+  const throwAsyncError=useThrowAsyncError();
 
 
   const [page, setPage] = useState(1);
@@ -25,7 +29,8 @@ function Trending({nav:pagetype}) {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [page]);
 
-  // throw new Error("SMGW")
+    //  throw new Error("SMGW")
+    // throwAsyncError("error")
   
   return (
     <>

@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import { useState, useEffect } from "react";
 import Genre from "./Genre";
 import useHttp from "../../hooks/useHttp";
+import GenreFilterSkeleton from "./genreFilterSkeleton";
 
 const intialState = {
   genresId: [],
@@ -29,10 +30,28 @@ function GenreFilter({
   const { sendRequest: getGenres ,loading:loadingGenre} = useHttp();
 
   const { sendRequest: getFilteredMovies ,loading:loadingMovies } = useHttp();
+  const [delay,setDelay]=useState(300);
+
+  useEffect(() => {
+    const navigationType = window.performance.getEntriesByType("navigation")[0].type;
+
+    if (navigationType === "reload") {
+      setDelay(400);
+      console.log("reload")
+    } else {
+      setDelay(0);
+    }
+  }, []);
+
+
+
   
  
   useEffect(()=>{
-    setloading(loadingMovies)
+  
+
+      setloading(loadingMovies)
+  
 
   },[loadingMovies])
 
@@ -47,11 +66,21 @@ function GenreFilter({
   }
 
   function setGenresList(response) {
-    setGenres(response.genres);
+    setTimeout(()=>{
+      setGenres(response.genres);
+
+    },300)
   }
 
   function setFilteredList(response) {
-    setmovies(response.results);
+
+    setTimeout(()=>{
+
+      setmovies(response.results);
+
+    },delay)
+
+   
     setpages(response.total_pages);
     // setloading(loadingMovies)
   }
@@ -72,18 +101,27 @@ function GenreFilter({
   }, [state.genresId, page,getFilteredMovies]);
 
 
+  const filterList= <div className=" xsm:mx-[3%] mx-[3%] flex flex-wrap gap-2 rounded-md">
+  {genres.map((genre) => (
+    <Genre
+      key={genre.id}
+      genre={genre}
+      addId={addId}
+      removeId={removeId}
+    ></Genre>
+  ))}
+</div>
+
+
   return (
-    <div className=" xsm:mx-[3%] mx-[3%] flex flex-wrap gap-2 rounded-md">
-      {genres.map((genre) => (
-        <Genre
-          key={genre.id}
-          genre={genre}
-          addId={addId}
-          removeId={removeId}
-        ></Genre>
-      ))}
-    </div>
+    
+   <>
+    { !genres.length ? <GenreFilterSkeleton></GenreFilterSkeleton> : filterList }
+    {/* <GenreFilterSkeleton></GenreFilterSkeleton> */}
+   </>
+   
   );
+
 }
 
 export default GenreFilter;

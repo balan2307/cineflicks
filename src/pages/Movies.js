@@ -5,11 +5,14 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import GenreFilter from "../components/genres/genreFilter";
 import LoaderIcon from "../components/utils/LoaderIcon";
+import SkeleteonItem from "../components/MovieItem/SkeleteonItem";
+
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 
 function Movies({ nav: pagetype }) {
   // const { movies, pages } = useLoaderData();
+ 
   const [movies, setmovies] = useState([]);
   const [pages, setpages] = useState([]);
   const [loading, setloading] = useState(false);
@@ -43,12 +46,20 @@ function Movies({ nav: pagetype }) {
 
       <div className="xsm:mx-[1%] mx-[3%]">
         <h1 className="xsm:text-2xl text-3xl mt-10 ml-[0.75rem] mb-6 font-gotham font-medium text-black">
-          Movies
+          Movie
         </h1>
-        {loading &&  <LoaderIcon></LoaderIcon>   }
-        {!loading && (
-          <ListMovies movies={movies} pagetype={pagetype}></ListMovies>
-        )}
+        {!movies.length ?  <SkeleteonItem></SkeleteonItem>
+        :<ListMovies movies={movies} pagetype={pagetype} ></ListMovies>   }
+
+
+        {/* <SkeleteonItem></SkeleteonItem> */}
+        
+
+        
+       
+       
+          
+     
 
         {!loading && <Paginate
           onPageChange={(e) => setPage(e)}
