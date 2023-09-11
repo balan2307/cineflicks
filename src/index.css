@@ -43,7 +43,7 @@ code {
 }
 
 .active {
-  @apply  rounded-full bg-black text-white
+  @apply  rounded-full text-white
 }
 
 @tailwind utilities;
