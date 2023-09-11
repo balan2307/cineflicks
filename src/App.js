@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import RootLayout from "./pages/Root";
 import DisplayMovies from "./pages/DisplayMovies";
-
+import { Suspense } from "react";
 import { Trendingloader } from "./loaders/trendingLoader";
 // import { Moviesloader } from "./loaders/moviesLoader";
 // import { seriesLoader } from "./loaders/seriesLoader";
@@ -14,7 +14,7 @@ import { Trendingloader } from "./loaders/trendingLoader";
 
 import TvSeries from "./pages/TvSeries";
 import Trending from "./pages/Trending";
-import { Suspense } from "react";
+// import { Suspense } from "react";
 import WatchList from "./pages/WatchList";
 import Movies from "./pages/Movies";
 import ErrorPage from "./pages/ErrorPage";
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/search",
-        element: <DisplayMovies nav={"search results"}></DisplayMovies>,
+        element:<Suspense fallback={<p>Loading....</p>}> <DisplayMovies nav={"search results"}></DisplayMovies></Suspense>,
         loader: (meta) =>
           import("./loaders/searchLoader").then((module) =>
             module.Searchloader(meta)
