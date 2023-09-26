@@ -12,6 +12,8 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 function Movies({ nav: pagetype }) {
   // const { movies, pages } = useLoaderData();
+
+  console.log("movies")
  
   const [movies, setmovies] = useState([]);
   const [pages, setpages] = useState([]);
@@ -33,6 +35,9 @@ function Movies({ nav: pagetype }) {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [page]);
 
+
+  console.log("check ",movies)
+
   return (
     <>
       <GenreFilter
@@ -44,15 +49,16 @@ function Movies({ nav: pagetype }) {
         setloading={setloading}
       ></GenreFilter>
 
-      <div className="xsm:mx-[1%] mx-[3%]">
+      <div className="xsm:mx-[1%] mx-[3%] ">
         <h1 className="xsm:text-2xl text-3xl mt-10 ml-[0.75rem] mb-6 font-gotham font-medium text-black">
           Movie
         </h1>
-        {!movies.length ?  <SkeleteonItem></SkeleteonItem>
+          {/* <SkeleteonItem></SkeleteonItem> */}
+        {(movies.length==0) ?  <SkeleteonItem></SkeleteonItem>
         :<ListMovies movies={movies} pagetype={pagetype} ></ListMovies>   }
 
 
-        {/* <SkeleteonItem></SkeleteonItem> */}
+      
         
 
         

@@ -1,7 +1,7 @@
 import React from "react";
 
 function SkeleteonItem() {
-  console.log("skeleton");
+
   return (
     <div className=" xsm:justify-center sm1:justify-around flex gap-x-1 gap-y-4 flex-wrap mb-10">
       {Array.from({ length: 10 }).map((l, i) => {

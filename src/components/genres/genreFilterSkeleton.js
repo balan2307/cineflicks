@@ -10,13 +10,13 @@ function dynamicSizegenre()
 function GenreFilterSkeleton() {
     console.log("genre sk")
   return (
-    <div className=" h-[64px] xsm:mx-[3%] mx-[3%] flex flex-wrap gap-2 
+    <div className="  xsm:mx-[3%] mx-[3%] flex flex-wrap gap-2 
     rounded-md ">
 
-      <div className='p-2 w-[100%] flex flex-wrap gap-2'>
+      <div className='p-2 w-[100%] flex flex-wrap gap-3'>
      
       {
-      Array.from({ length: 20 }).map((l, i) => {
+      Array.from({ length:20 }).map((l, i) => {
         return <span className={`bg-gray-500  h-5 ${dynamicSizegenre()} rounded-md `} key={i} ></span>
 
       })

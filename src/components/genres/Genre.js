@@ -5,6 +5,7 @@ function Genre({ genre ,addId,removeId }) {
   const [status,setStatus]=useState(false);
 
 
+
   function handleClick() {
 
     setToggle((status)=>{

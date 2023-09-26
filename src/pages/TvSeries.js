@@ -50,7 +50,7 @@ function TvSeries({ nav: pagetype }) {
           <ListMovies movies={movies} pagetype={pagetype}></ListMovies>
         )} */}
 
-        {!movies.length ? (
+        {movies.length==0 ? (
           <SkeleteonItem></SkeleteonItem>
         ) : (
           <ListMovies movies={movies} pagetype={pagetype}></ListMovies>

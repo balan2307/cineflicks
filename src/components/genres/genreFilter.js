@@ -32,28 +32,15 @@ function GenreFilter({
   const { sendRequest: getFilteredMovies ,loading:loadingMovies } = useHttp();
   const [delay,setDelay]=useState(300);
 
-  useEffect(() => {
-    const navigationType = window.performance.getEntriesByType("navigation")[0].type;
 
-    if (navigationType === "reload") {
-      setDelay(400);
-      console.log("reload")
-    } else {
-      setDelay(0);
-    }
-  }, []);
-
-
-
-  
  
-  useEffect(()=>{
+  // useEffect(()=>{
   
 
-      setloading(loadingMovies)
+  //     setloading(loadingMovies)
   
 
-  },[loadingMovies])
+  // },[loadingMovies])
 
   const [state, dispatch] = useReducer(genreReducer, intialState);
 
@@ -66,22 +53,27 @@ function GenreFilter({
   }
 
   function setGenresList(response) {
-    setTimeout(()=>{
+    setloading(true)
+    // setTimeout(()=>{
       setGenres(response.genres);
 
-    },300)
+    // },400)
   }
 
   function setFilteredList(response) {
 
-    setTimeout(()=>{
+     setTimeout(()=>{
 
       setmovies(response.results);
 
-    },delay)
+     },250)
 
-   
     setpages(response.total_pages);
+
+    // setTimeout(()=>{
+      setloading(false)
+
+    // },500)
     // setloading(loadingMovies)
   }
 
@@ -101,7 +93,7 @@ function GenreFilter({
   }, [state.genresId, page,getFilteredMovies]);
 
 
-  const filterList= <div className=" xsm:mx-[3%] mx-[3%] flex flex-wrap gap-2 rounded-md">
+  const filterList= <div className=" xsm:mx-[3%] mx-[3%] flex flex-wrap gap-3 rounded-md">
   {genres.map((genre) => (
     <Genre
       key={genre.id}

@@ -3,10 +3,10 @@ import cross from "../../assets/cross.svg";
 import series from "../../assets/series.svg";
 import trending from "../../assets/trending.svg";
 import movies from "../../assets/movies.svg";
-import watchlist2 from "../../assets/watchlist2.svg"
+import watchlist2 from "../../assets/watchlist2.svg";
 import { NavLink } from "react-router-dom";
 
-function SideBar({toggleSidebar,showSidebar}) {
+function SideBar({ toggleSidebar, showSidebar }) {
   return (
     <>
       <ul
@@ -23,7 +23,6 @@ function SideBar({toggleSidebar,showSidebar}) {
             <img className="w-6 h-6 inline " src={trending}></img>
           </span>
           <span>
-          
             <NavLink
               to="/trending"
               className={({ isActive }) => (isActive ? "text-gray-400" : "")}
